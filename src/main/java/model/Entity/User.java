@@ -46,6 +46,51 @@ public class User {
     @JoinColumn(name="user_id",referencedColumnName = "id")
     private List<cities> cities;
 
+    /*user has airport*/
+    @OneToMany(targetEntity = Airports.class,fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+                    CascadeType.DETACH,CascadeType.REFRESH})
+    @JsonManagedReference
+    @JoinColumn(name="user_id",referencedColumnName = "id")
+    private List<Airports> airports;
+
+    /*user has attractions*/
+    @OneToMany(targetEntity = Attraction.class,fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+                    CascadeType.DETACH,CascadeType.REFRESH})
+    @JsonManagedReference
+    @JoinColumn(name="user_id",referencedColumnName = "id")
+    private List<Attraction> attraction;
+
+    /*user has Culture*/
+    @OneToMany(targetEntity = culture.class,fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+                    CascadeType.DETACH,CascadeType.REFRESH})
+    @JsonManagedReference
+    @JoinColumn(name="user_id",referencedColumnName = "id")
+    private List<culture> culture;
+
+
+    /*user has Culture*/
+    @OneToMany(targetEntity = Hotels.class,fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+                    CascadeType.DETACH,CascadeType.REFRESH})
+    @JsonManagedReference
+    @JoinColumn(name="user_id",referencedColumnName = "id")
+    private List<Hotels> hotels;
+
+
+    /*user has Restaurants*/
+    @OneToMany(targetEntity = Restaurants.class,fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,
+                    CascadeType.DETACH,CascadeType.REFRESH})
+    @JsonManagedReference
+    @JoinColumn(name="user_id",referencedColumnName = "id")
+    private List<Restaurants> restaurants;
+
+
+
+
     public User(){
 
     }
@@ -109,6 +154,48 @@ public class User {
     public void setCountries(List<Countries> countries) {
         this.countries = countries;
     }
+
+    public List<Airports> getAirports() {
+        return airports;
+    }
+
+    public void setAirports(List<Airports> airports) {
+        this.airports = airports;
+    }
+
+    public List<Attraction> getAttraction() {
+        return attraction;
+    }
+
+    public void setAttraction(List<Attraction> attraction) {
+        this.attraction = attraction;
+    }
+
+    public List<model.Entity.culture> getCulture() {
+        return culture;
+    }
+
+    public void setCulture(List<model.Entity.culture> culture) {
+        this.culture = culture;
+    }
+
+    public List<Hotels> getHotels() {
+        return hotels;
+    }
+
+    public void setHotels(List<Hotels> hotels) {
+        this.hotels = hotels;
+    }
+
+    public List<Restaurants> getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(List<Restaurants> restaurants) {
+        this.restaurants = restaurants;
+    }
+
+
 
     public void add(Countries tempCountries){
         if(countries == null){
